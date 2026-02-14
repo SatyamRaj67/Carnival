@@ -1,0 +1,35 @@
+/* =================== */
+/* ===   Header Styles        === */
+/* =================== */
+/* Logo and the top part */
+
+header {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+header .logoBx {
+  width: 80%;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "logo";
+  transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+}
+
+header .logoBx > img {
+  width: 100%;
+  grid-area: logo;
+}
+
+header .logoBx .logo {
+  width: 70%;
+}
+
+@starting-style {
+    header .logoBx{
+        width: 0;
+        height: 0;
+        transform: rotate(-360deg);
+    }
+}
