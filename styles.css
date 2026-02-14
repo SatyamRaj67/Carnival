@@ -3,33 +3,132 @@
 /* =================== */
 /* Logo and the top part */
 
-header {
-  width: 100%;
-  display: grid;
-  place-items: center;
+.header {
+  height: 100vh;
+  overflow: hidden;
 }
 
-header .logoBx {
-  width: 80%;
+.header .logoBx {
+  position: relative;
+  width: 100%;
   display: grid;
   place-items: center;
   grid-template-areas: "logo";
-  transition: width 0.5s ease, height 0.5s ease, transform 0.5s ease;
+  opacity: 1;
+  transform: rotate(0deg) scale(0.8);
+  transition: all 0.5s ease-in-out;
 }
 
-header .logoBx > img {
-  width: 100%;
+.header .logoBx:hover .logo {
+  transform: scale(0.75);
+}
+
+.header .logoBx > img {
+  width: 80%;
   grid-area: logo;
 }
 
-header .logoBx .logo {
-  width: 70%;
+.header .logoBx .logo {
+  transform: scale(0.65);
+}
+
+/* ===  Asset Box === */
+
+.header .assetBx {
+  position: relative;
+  width: 100%;
+}
+
+.header .assetBx > div {
+  position: absolute;
+  width: 20%;
+  aspect-ratio: 1/1;
+  transition-delay:
+    all 0.5s,
+    transform 0s,
+    scale 0s;
+}
+
+.header .assetBx > div::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 80%;
+  height: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  filter: blur(5px);
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+  opacity: 0;
+}
+
+.header .assetBx > div:hover {
+  transform: translate(0%, -30%) scale(1.2);
+}
+
+.header .assetBx > div:hover::after {
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+}
+
+.header .assetBx .carnival-tent {
+  top: 10%;
+  left: 10%;
+  transform: translate(0%, -20%);
+}
+
+.header .assetBx .carnival-carousel {
+  top: 20%;
+  right: 10%;
+  transform: translate(0%, -20%);
+}
+
+/* === Content Box === */
+.header .contentBx{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .contentBx .email_form{
+    background: orange;
+    padding: 1em 2em;
+    border-radius: 5px;
+}
+
+.header .contentBx .email_form input{
+    padding: 0.5em 1em;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.header .contentBx .email_form button{
+    padding: 0.5em 1em;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    margin-left: 1em;
 }
 
 @starting-style {
-    header .logoBx{
-        width: 0;
-        height: 0;
-        transform: rotate(-360deg);
-    }
+  .header .logoBx {
+    opacity: 0;
+    transform: rotate(-360deg) scale(0);
+  }
+
+  .header .assetBx .carnival-tent {
+    transform: translate(-100vw, -20%);
+  }
+
+  .header .assetBx .carnival-carousel {
+    transform: translate(100vw, -20%);
+  }
 }
